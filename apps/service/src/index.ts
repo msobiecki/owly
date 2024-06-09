@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 
 import createExpress from "./lib/express";
 
+import helmetMiddleware from "./lib/middlewares/helmet";
 import cookieMiddleware from "./lib/middlewares/cookie";
 import loggerMiddleware from "./lib/middlewares/logger";
 import metricsMiddleware from "./lib/middlewares/metrics";
@@ -17,7 +18,12 @@ import error from "./lib/express-error";
 dotenv.config();
 
 createExpress({
-  middlewares: [cookieMiddleware, loggerMiddleware, metricsMiddleware],
+  middlewares: [
+    helmetMiddleware,
+    cookieMiddleware,
+    loggerMiddleware,
+    metricsMiddleware,
+  ],
   routers: [
     ["/", swaggerRouter],
     ["/", baseRouter],
