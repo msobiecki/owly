@@ -2,11 +2,14 @@ import dotenv from "dotenv";
 
 import createExpress from "./lib/express";
 
+import cookieMiddleware from "./lib/middlewares/cookie";
 import loggerMiddleware from "./lib/middlewares/logger";
 import metricsMiddleware from "./lib/middlewares/metrics";
 
-import baseRouter from "./api/routes/base";
 import swaggerRouter from "./lib/swagger";
+
+import baseRouter from "./api/routes/base";
+import meRouter from "./api/routes/me";
 
 import banner from "./lib/express-banner";
 import error from "./lib/express-error";
@@ -14,10 +17,11 @@ import error from "./lib/express-error";
 dotenv.config();
 
 createExpress({
-  middlewares: [loggerMiddleware, metricsMiddleware],
+  middlewares: [cookieMiddleware, loggerMiddleware, metricsMiddleware],
   routers: [
     ["/", swaggerRouter],
     ["/", baseRouter],
+    ["/me", meRouter],
   ],
 })
   .then(banner)

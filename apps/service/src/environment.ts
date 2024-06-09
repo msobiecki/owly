@@ -35,6 +35,7 @@ const environment = {
     hostname: getOsEnvironment("APP_HOSTNAME"),
     port: normalizePort(getOsEnvironment("APP_PORT")),
     routePrefix: getOsEnvironment("APP_ROUTE_PREFIX"),
+    cookieSecret: getOsEnvironment("APP_COOKIE_SIGN_SECRET"),
   },
   cluster: {
     numberOfInstances: toNumber(

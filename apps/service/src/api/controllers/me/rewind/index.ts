@@ -1,2 +1,2 @@
 // eslint-disable-next-line import/prefer-default-export
-export { default as root } from "./root";
+export { default as daily } from "./daily";

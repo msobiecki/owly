@@ -15,6 +15,6 @@ const router = express.Router();
  *       200:
  *         description: Returns the name, version, and description of the API.
  */
-router.get("/", baseController.default);
+router.get("/", baseController.root);
 
 export default router;
