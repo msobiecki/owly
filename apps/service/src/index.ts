@@ -2,10 +2,15 @@ import dotenv from "dotenv";
 
 import createExpress from "./lib/express";
 
-import helmetMiddleware from "./lib/middlewares/helmet";
-import cookieMiddleware from "./lib/middlewares/cookie";
-import loggerMiddleware from "./lib/middlewares/logger";
-import metricsMiddleware from "./lib/middlewares/metrics";
+import {
+  loggerMiddleware,
+  metricsMiddleware,
+  corsMiddleware,
+  requestIpMiddleware,
+  rateLimitMiddleware,
+  helmetMiddleware,
+  cookieMiddleware,
+} from "./lib/middlewares";
 
 import swaggerRouter from "./lib/swagger";
 
@@ -14,21 +19,29 @@ import meRouter from "./api/routes/me";
 
 import banner from "./lib/express-banner";
 import error from "./lib/express-error";
+import { errorHandler, notFoundHandler } from "./lib/exception-handlers";
 
 dotenv.config();
 
 createExpress({
   middlewares: [
-    helmetMiddleware,
-    cookieMiddleware,
     loggerMiddleware,
     metricsMiddleware,
+    corsMiddleware,
+    requestIpMiddleware,
+    rateLimitMiddleware,
+    helmetMiddleware,
+    cookieMiddleware,
   ],
   routers: [
     ["/", swaggerRouter],
     ["/", baseRouter],
     ["/me", meRouter],
   ],
+  exceptionHandlers: {
+    notFoundHandler,
+    errorHandler,
+  },
 })
   .then(banner)
   .catch(error);

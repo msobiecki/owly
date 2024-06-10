@@ -4,6 +4,6 @@ import environment from "../../environment";
 
 const { cookieSecret } = environment.app;
 
-const cookie = cookieParser(cookieSecret);
+const cookieMiddleware = cookieParser(cookieSecret);
 
-export default cookie;
+export default cookieMiddleware;

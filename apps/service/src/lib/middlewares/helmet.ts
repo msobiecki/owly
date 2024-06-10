@@ -1,5 +1,5 @@
-import createHelmet from "helmet";
+import helmet from "helmet";
 
-const helmet = createHelmet();
+const helmetMiddleware = helmet();
 
-export default helmet;
+export default helmetMiddleware;
