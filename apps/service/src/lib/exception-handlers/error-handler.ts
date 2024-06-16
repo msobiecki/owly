@@ -1,11 +1,10 @@
 import { NextFunction, Request, Response } from "express";
-import httpStatus from "http-status";
 
-const { INTERNAL_SERVER_ERROR } = httpStatus;
+import getResponseStatusCode, {
+  INTERNAL_SERVER_ERROR,
+} from "../../utils/get-response-status-code";
 
-const code = httpStatus[`${INTERNAL_SERVER_ERROR}`];
-const name = httpStatus[`${INTERNAL_SERVER_ERROR}_NAME`];
-const message = httpStatus[`${INTERNAL_SERVER_ERROR}_MESSAGE`];
+const { code, name, message } = getResponseStatusCode(INTERNAL_SERVER_ERROR);
 
 /**
  * Handles errors that occur during request processing.

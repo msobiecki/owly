@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import { OK } from "http-status";
+
+import { OK } from "../../../../utils/get-response-status-code";
 
 const daily = (request: Request, response: Response) => {
   response.status(OK).json({

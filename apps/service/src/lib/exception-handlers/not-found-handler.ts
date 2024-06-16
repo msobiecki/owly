@@ -1,11 +1,10 @@
 import { Request, Response } from "express";
-import httpStatus from "http-status";
 
-const { NOT_FOUND } = httpStatus;
+import getResponseStatusCode, {
+  NOT_FOUND,
+} from "../../utils/get-response-status-code";
 
-const code = httpStatus[`${NOT_FOUND}`];
-const name = httpStatus[`${NOT_FOUND}_NAME`];
-const message = httpStatus[`${NOT_FOUND}_MESSAGE`];
+const { code, name, message } = getResponseStatusCode(NOT_FOUND);
 
 /**
  * Handles requests to routes that are not found (404 Not Found).
@@ -13,7 +12,7 @@ const message = httpStatus[`${NOT_FOUND}_MESSAGE`];
  * @param response - The HTTP response object.
  */
 function notFoundHandler(request: Request, response: Response) {
-  response.status(httpStatus.NOT_FOUND).json({
+  response.status(NOT_FOUND).json({
     code,
     name,
     message,
