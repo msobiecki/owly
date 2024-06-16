@@ -1,8 +1,8 @@
 import { HealthCheckError } from "@godaddy/terminus";
 
-import database from "./setup";
+import database from "../database/setup";
 
-const healthcheck = async () => {
+const checkDatabaseConnection = async () => {
   try {
     await database.query.words.findFirst();
   } catch (error) {
@@ -10,4 +10,4 @@ const healthcheck = async () => {
   }
 };
 
-export default healthcheck;
+export default checkDatabaseConnection;

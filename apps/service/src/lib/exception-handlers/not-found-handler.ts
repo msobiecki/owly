@@ -12,6 +12,11 @@ const { code, name, message } = getResponseStatusCode(NOT_FOUND);
  * @param response - The HTTP response object.
  */
 function notFoundHandler(request: Request, response: Response) {
+  const { ip, method, originalUrl: url } = request;
+
+  request.log
+    .child({ tag: "exception-routes-error" })
+    .warn(`${ip} [${method}] ${url} ${code} - ${message}`);
   response.status(NOT_FOUND).json({
     code,
     name,

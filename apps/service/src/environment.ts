@@ -42,6 +42,9 @@ const environment = {
       getOsEnvironmentOptional("CLUSTER_NUMBER_OF_INSTANCES"),
     ),
   },
+  database: {
+    connectionString: getOsEnvironment("DATABASE_URL"),
+  },
   log: {
     level: getOsEnvironment("LOG_LEVEL"),
     path: getOsEnvironmentOptional("LOG_PATH"),

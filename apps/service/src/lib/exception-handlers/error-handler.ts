@@ -28,7 +28,10 @@ function errorHandler(
 
   request.log
     .child({ tag: "exception-routes-error" })
-    .error(`${ip} [${method}] ${url} ${code} - ${error.message ?? message}`);
+    .error(
+      { error },
+      `${ip} [${method}] ${url} ${code} - ${error.message ?? message}`,
+    );
   response.status(INTERNAL_SERVER_ERROR).json({
     code,
     name,
