@@ -13,6 +13,7 @@
     "database:up": "docker-compose up -d database",
     "database:generate": "drizzle-kit generate",
     "database:migrate": "drizzle-kit migrate",
+    "database:migrate:drop": "drizzle-kit drop",
     "prepare": "husky"
   },
   "keywords": [],
