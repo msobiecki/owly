@@ -10,6 +10,9 @@
     "start:cluster": "node dist/cluster.js",
     "dev": "nodemon src/index.ts",
     "dev:cluster": "nodemon src/cluster.ts",
+    "database:up": "docker-compose up -d database",
+    "database:generate": "drizzle-kit generate",
+    "database:migrate": "drizzle-kit migrate",
     "prepare": "husky"
   },
   "keywords": [],

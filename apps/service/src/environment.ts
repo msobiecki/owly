@@ -43,7 +43,7 @@ const environment = {
     ),
   },
   database: {
-    connectionString: getOsEnvironment("DATABASE_URL"),
+    connectionString: getOsEnvironment("DATABASE_CONNECTION_STRING"),
   },
   log: {
     level: getOsEnvironment("LOG_LEVEL"),
