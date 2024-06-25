@@ -5,15 +5,15 @@ import { OK } from "../../../../utils/get-response-status-code";
 const daily = (request: Request, response: Response) => {
   response.status(OK).json({
     metadata: {
+      type: "word",
       language: {
         target: "en",
         source: "pl",
       },
-      rewind: "daily",
-      type: "word",
-      category: "Food",
     },
     data: {
+      level: "B1",
+      category: "Food",
       source: "jabłko",
       target: "apple",
     },

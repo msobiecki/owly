@@ -19,15 +19,15 @@ router.get("/persist", meController.persist);
 
 /**
  * @swagger
- * /me/rewind/daily:
+ * /me/learning/daily:
  *   get:
- *     description: Endpoint to retrieve daily rewind data.
+ *     description: Endpoint to retrieve daily learning data.
  *     tags:
  *       - me
  *     responses:
  *       200:
- *         description: Successful response with daily rewind data.
+ *         description: Successful response with daily learning data.
  */
-router.get("/rewind/daily", meController.rewind.daily);
+router.get("/learning/daily", meController.learning.daily);
 
 export default router;
