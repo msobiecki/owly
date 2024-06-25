@@ -1,9 +1,61 @@
 {
-  "id": "123e9e94-bc54-42ca-9600-11a13da12087",
+  "id": "dce4d275-0cdb-4387-9fa0-6bb9de19b93d",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "public.learnings": {
+      "name": "learnings",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "frequency": {
+          "name": "frequency",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "learnings_id_words_id_fk": {
+          "name": "learnings_id_words_id_fk",
+          "tableFrom": "learnings",
+          "tableTo": "words",
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "public.words": {
       "name": "words",
       "schema": "",
@@ -12,6 +64,18 @@
           "name": "id",
           "type": "bigserial",
           "primaryKey": true,
+          "notNull": true
+        },
+        "level": {
+          "name": "level",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "category": {
+          "name": "category",
+          "type": "text",
+          "primaryKey": false,
           "notNull": true
         },
         "target": {
@@ -34,12 +98,6 @@
         },
         "source_language": {
           "name": "source_language",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "category": {
-          "name": "category",
           "type": "text",
           "primaryKey": false,
           "notNull": true

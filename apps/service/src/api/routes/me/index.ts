@@ -17,17 +17,4 @@ const router = express.Router();
  */
 router.get("/persist", meController.persist);
 
-/**
- * @swagger
- * /me/learning/daily:
- *   get:
- *     description: Endpoint to retrieve daily learning data.
- *     tags:
- *       - me
- *     responses:
- *       200:
- *         description: Successful response with daily learning data.
- */
-router.get("/learning/daily", meController.learning.daily);
-
 export default router;
