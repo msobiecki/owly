@@ -20,6 +20,7 @@ import meRouter from "./api/routes/me";
 import banner from "./lib/express-banner";
 import error from "./lib/express-error";
 import { errorHandler, notFoundHandler } from "./lib/exception-handlers";
+import { cronWordDaily } from "./api/crons";
 
 dotenv.config();
 
@@ -38,6 +39,7 @@ createExpress({
     ["/", baseRouter],
     ["/me", meRouter],
   ],
+  crons: [cronWordDaily],
   exceptionHandlers: {
     notFoundHandler,
     errorHandler,

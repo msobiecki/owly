@@ -1,5 +1,6 @@
-import http from "node:http";
 import express, { Express, RequestHandler, ErrorRequestHandler } from "express";
+import http from "node:http";
+import { ScheduledTask } from "node-cron";
 
 import environment from "../environment";
 
@@ -10,10 +11,12 @@ const { hostname, port } = environment.app;
 const createExpress = ({
   middlewares,
   routers,
+  crons,
   exceptionHandlers: { notFoundHandler, errorHandler },
 }: {
   middlewares: RequestHandler[];
   routers: [string, RequestHandler][];
+  crons: ScheduledTask[];
   exceptionHandlers: {
     notFoundHandler: RequestHandler;
     errorHandler: ErrorRequestHandler;
@@ -27,6 +30,10 @@ const createExpress = ({
 
   for (const [route, router] of routers) {
     app.use(`${environment.app.routePrefix}${route}`, router);
+  }
+
+  for (const cron of crons) {
+    cron.start();
   }
 
   app.all("*", notFoundHandler);
