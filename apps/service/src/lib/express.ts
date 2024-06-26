@@ -1,6 +1,6 @@
 import express, { Express, RequestHandler, ErrorRequestHandler } from "express";
 import http from "node:http";
-import { ScheduledTask } from "node-cron";
+import { CronJob } from "cron";
 
 import environment from "@environment";
 
@@ -16,7 +16,7 @@ const createExpress = ({
 }: {
   middlewares: RequestHandler[];
   routers: [string, RequestHandler][];
-  crons: ScheduledTask[];
+  crons: CronJob[];
   exceptionHandlers: {
     notFoundHandler: RequestHandler;
     errorHandler: ErrorRequestHandler;

@@ -1,6 +1,6 @@
-import cron from "node-cron";
+import { CronJob } from "cron";
 
-const cronWordDaily = cron.schedule("* * * * *", () => {
+const cronWordDaily = new CronJob("* * * * *", () => {
   console.log("running a task every minute");
 });
 
