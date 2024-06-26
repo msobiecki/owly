@@ -2,7 +2,7 @@ import express, { Express, RequestHandler, ErrorRequestHandler } from "express";
 import http from "node:http";
 import { ScheduledTask } from "node-cron";
 
-import environment from "../environment";
+import environment from "@environment";
 
 import terminus from "./terminus";
 

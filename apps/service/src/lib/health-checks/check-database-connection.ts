@@ -1,6 +1,6 @@
 import { HealthCheckError } from "@godaddy/terminus";
 
-import database from "../database/setup";
+import database from "@database/setup";
 
 const checkDatabaseConnection = async () => {
   try {

@@ -1,7 +1,7 @@
 import express from "express";
 import asyncHandler from "express-async-handler";
 
-import * as learningController from "../../controllers/learning";
+import * as learningController from "@controllers/learning";
 
 const router = express.Router();
 

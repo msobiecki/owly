@@ -3,9 +3,9 @@ import { Request, Response } from "express";
 import getResponseStatusCode, {
   NOT_FOUND,
   OK,
-} from "../../../../utils/get-response-status-code";
+} from "@utils/get-response-status-code";
 
-import database from "../../../../lib/database/setup";
+import database from "@database/setup";
 
 const { code, name, message } = getResponseStatusCode(NOT_FOUND);
 

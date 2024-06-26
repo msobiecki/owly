@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { v4 as uuidv4 } from "uuid";
 
-import { OK } from "../../../utils/get-response-status-code";
+import { OK } from "@utils/get-response-status-code";
 
 const persist = (request: Request, response: Response) => {
   const hasPersist = !!request.signedCookies.uid;
